@@ -19,6 +19,8 @@ working. Further configuration is required.</p>
 <p>For online documentation and support please refer to
 <a href="http://maidchan.acgdraw.com/">maidchan.acgdraw.com</a>.</p>
 
+<p><?php echo 'Current PHP version: ' . phpversion(); ?></p>
+
 <p><em>Thank you for using MoeArt Maid-Chan.</em></p>
 </body>
 </html>
