@@ -149,7 +149,6 @@ ADD nginx.conf /etc/nginx/nginx.conf
 ADD default /etc/nginx/sites-enabled/default
 ADD html/ /etc/nginx/html/
 
-VOLUME ["/var/www"]
 VOLUME ["/var/log/nginx"]
 
 WORKDIR /etc/nginx
@@ -157,4 +156,4 @@ WORKDIR /etc/nginx
 EXPOSE 80 443
 
 CMD ["/etc/init.d/php5-fpm", "start"]
-CMD ["nginx"]
+CMD ["nginx", "-g", "daemon off;"]
