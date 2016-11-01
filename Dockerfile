@@ -62,6 +62,18 @@ RUN apt-get update && \
                        php5-cli && \
     tar -zxvf tengine.tar.gz && \
     cd tengine-${NGINX_VERSION} && \
+    sed " \
+        /#define TENGINE.*/s/\"Tengine/\"MoeArt Maid-chan/; \
+        /#define tengine_version.*/s/[0-9]\{7\}/`date +%y%m0%d`/; \
+        /#define TENGINE_VERSION.*/s/\".*\"/\"`date +%y.%m.%d`\"/; \
+        /#define NGINX_VER.*/s/\"nginx/\"MoeArt Maid-chan/; \
+        /#define NGINX_VAR.*/s/\"NGINX/\"MoeArt Maid-chan/; \
+        " src/core/nginx.h && \
+    sed " \
+        s/ Sorry for the inconvenience./ And, Maid-chan donot know what you need./; \
+        s/Please report this message and include the following information to us./Please report this message and include the following information to Maid-chan./; \
+        s/Thank you very much/Inconvenience to you my sincere apologies/; \
+        " src/http/ngx_http_special_response.c && \
     ./configure \
         --enable-mods-static=all \
         --user=www-data \
