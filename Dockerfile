@@ -3,14 +3,14 @@ FROM debian
 MAINTAINER MoeArt Developmemnt Team <dev@art.moe>
 
 ENV   DEBIAN_FRONTEND noninteractive
-ENV   LANGUAGE en_US
+ENV   LANGUAGE en_US.UTF-8
 ENV   LANG en_US.UTF-8
-ENV   LC_CODE UTF-8
+ENV   LC_ALL en_US.UTF-8
 
 # Configure timezone and locale
 RUN apt-get update && \
     apt-get install -y locales && \
-    localedef -i $LANGUAGE -f $LC_CODE $LANG && \
+    localedef -i $en_US -f UTF-8 en_US.UTF-8 && \
     dpkg-reconfigure locales
 
 WORKDIR /usr/src/
@@ -93,7 +93,7 @@ RUN apt-get update && \
         --with-http_addition_module \
         --with-http_realip_module \
         --with-http_sysguard_module \
-        --with-http_spdy_module \
+        --with-http_v2_module \
         --with-http_ssl_module \
         --with-http_stub_status_module \
         --with-http_sub_module \
