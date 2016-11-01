@@ -10,8 +10,8 @@ ENV   LANG en_US.UTF-8
 ENV   LC_ALL en_US.UTF-8
 
 # Configure timezone and locale
-RUN locale-gen $LANGUAGE && \
-    dpkg-reconfigure locales
+#RUN locale-gen $LANGUAGE && \
+#    dpkg-reconfigure locales
 
 WORKDIR /usr/src/
 
