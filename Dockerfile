@@ -55,7 +55,6 @@ RUN apt-get update && \
                        php5-gd \
                        php5-json \
                        php5-mcrypt \
-                       php5-opcache \
                        php5-readline \
                        libapache2-mod-php5 \
                        php5-cli && \
