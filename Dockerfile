@@ -66,7 +66,7 @@ RUN apt-get update && \
         /#define TENGINE_VERSION.*/s/\".*\"/\"`date +%y.%m.%d`\"/; \
         /#define NGINX_VER.*/s/\"nginx/\"MoeArt Maid-chan/; \
         /#define NGINX_VAR.*/s/\"NGINX/\"MoeArt Maid-chan/; \
-        " src/core/nginx.h > src/core/nginx.h && \
+        " src/core/nginx.h && \
     sed -i " \
         s/ Sorry for the inconvenience./ And, Maid-chan donot know what you need./; \
         s/Please report this message and include the following information to us./Please report this message and include the following information to Maid-chan./; \
