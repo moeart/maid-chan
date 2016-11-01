@@ -1,21 +1,20 @@
-FROM debian:8.6
+FROM debian
 
 MAINTAINER MoeArt Developmemnt Team <dev@art.moe>
 
-ENV NGINX_VERSION tengine-2.1.2_f
-
 ENV   DEBIAN_FRONTEND noninteractive
-ENV   LANGUAGE en_US.UTF-8
+ENV   LANGUAGE en_US
 ENV   LANG en_US.UTF-8
-ENV   LC_ALL en_US.UTF-8
+ENV   LC_CODE UTF-8
 
 # Configure timezone and locale
-#RUN locale-gen $LANGUAGE && \
-#    dpkg-reconfigure locales
+RUN apt-get update && \
+    apt-get install -y locales && \
+    localedef -i $LANGUAGE -f $LC_CODE $LANG && \
+    dpkg-reconfigure locales
 
 WORKDIR /usr/src/
-
-ADD https://github.com/alibaba/tengine/archive/${NGINX_VERSION}.tar.gz tengine.tar.gz
+ADD https://github.com/alibaba/tengine/archive/master.tar.gz tengine.tar.gz
 
 # https://github.com/alibaba/tengine/blob/master/auto/options
 # https://travis-ci.org/alibaba/tengine/jobs/32304924
@@ -47,8 +46,6 @@ RUN apt-get update && \
                        libpcre++0 \
                        libpcre++-dev \
                        libperl-dev \
-                       wget \
-                       curl \
                        php5-fpm \
                        php5-common \
                        php5-curl \
@@ -59,7 +56,7 @@ RUN apt-get update && \
                        libapache2-mod-php5 \
                        php5-cli && \
     tar -zxvf tengine.tar.gz && \
-    cd tengine-${NGINX_VERSION} && \
+    cd tengine-master && \
     sed -i " \
         /#define TENGINE.*/s/\"Tengine/\"MoeArt Maid-chan/; \
         /#define tengine_version.*/s/[0-9]\{7\}/`date +%y%m0%d`/; \
@@ -159,4 +156,5 @@ WORKDIR /etc/nginx
 
 EXPOSE 80 443
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/etc/init.d/php5-fpm", "start"]
+CMD ["nginx"]
