@@ -10,7 +10,7 @@ ENV   LC_ALL en_US.UTF-8
 # Configure timezone and locale
 RUN apt-get update && \
     apt-get install -y locales && \
-    localedef -i $en_US -f UTF-8 en_US.UTF-8 && \
+    localedef -i en_US -f UTF-8 en_US.UTF-8 && \
     dpkg-reconfigure locales
 
 WORKDIR /usr/src/
