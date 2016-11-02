@@ -146,6 +146,7 @@ RUN apt-get update && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
+ADD conf/php.ini /etc/php5/fpm/php.ini
 ADD conf/nginx.conf /etc/nginx/nginx.conf
 ADD conf/default /etc/nginx/sites-enabled/default
 ADD html/ /etc/nginx/html/
