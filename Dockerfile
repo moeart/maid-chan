@@ -10,7 +10,8 @@ ENV   LC_ALL en_US.UTF-8
 # Configure timezone and locale
 RUN apt-get update && \
     apt-get install -y locales && \
-    localedef -i en_US -f UTF-8 en_US.UTF-8 && \
+    echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
+    locale-gen && \
     dpkg-reconfigure locales
 
 WORKDIR /usr/src/
@@ -145,15 +146,13 @@ RUN apt-get update && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
-ADD nginx.conf /etc/nginx/nginx.conf
-ADD default /etc/nginx/sites-enabled/default
+ADD conf/nginx.conf /etc/nginx/nginx.conf
+ADD conf/default /etc/nginx/sites-enabled/default
 ADD html/ /etc/nginx/html/
+ADD script/maid /maid
 
 VOLUME ["/var/log/nginx"]
 
 WORKDIR /etc/nginx
-
 EXPOSE 80 443
-
-CMD ["/etc/init.d/php5-fpm", "start"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/maid"]

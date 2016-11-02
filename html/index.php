@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1>Welcome to MoeArt Maid-Chan!</h1>
-<p>If you see this page, the tengine web server is successfully installed and
+<p>If you see this page, the MoeArt Maid-Chan is successfully installed and
 working. Further configuration is required.</p>
 
 <p>For online documentation and support please refer to
