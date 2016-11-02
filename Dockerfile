@@ -151,6 +151,8 @@ ADD conf/default /etc/nginx/sites-enabled/default
 ADD html/ /etc/nginx/html/
 ADD script/maid /maid
 
+RUN chmod +x /maid
+
 VOLUME ["/var/log/nginx"]
 
 WORKDIR /etc/nginx
