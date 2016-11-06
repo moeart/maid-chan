@@ -145,7 +145,8 @@ RUN apt-get update && \
     apt-get clean all && \
     rm -rf /tmp/* && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
-    ln -sf /dev/stderr /var/log/nginx/error.log
+    ln -sf /dev/stderr /var/log/nginx/error.log && \
+    apt-get autoremove -y
 
 ADD conf/php.ini /etc/php5/fpm/php.ini
 ADD conf/nginx.conf /etc/nginx/nginx.conf
