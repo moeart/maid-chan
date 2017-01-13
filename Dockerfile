@@ -7,6 +7,10 @@ ENV   LANGUAGE en_US.UTF-8
 ENV   LANG en_US.UTF-8
 ENV   LC_ALL en_US.UTF-8
 
+# Using this UID / GID allows local and live file modification of web site
+RUN usermod -u 1039 www-data
+RUN groupmod -g 1039 www-data
+
 # Configure timezone and locale
 RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
 RUN apt-get update && \

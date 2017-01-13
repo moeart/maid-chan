@@ -3,8 +3,11 @@
 # Script Name  :  MoeArt Maid-Chan startup script
 # Script Author:  MoeArt Development Team
 # Description  :  The init script of maid-chan
-# Build Date   :  Nov, 6th 2016 Sun
+# Build Date   :  Jan, 13th 2017 Fri
 # -------------------------------------------------
+
+# Starting up Cron
+/etc/init.d/cron start
 
 # Starting up PHP and NGINX engine
 /etc/init.d/php5-fpm start
