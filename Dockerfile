@@ -10,7 +10,7 @@ ENV   LC_ALL en_US.UTF-8
 # Configure timezone and locale
 RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
 RUN apt-get update && \
-    apt-get install -y locales && \
+    apt-get install -y cron locales && \
     echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     locale-gen && \
     dpkg-reconfigure locales
