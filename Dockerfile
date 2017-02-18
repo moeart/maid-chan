@@ -151,6 +151,7 @@ RUN apt-get update && \
 
 ADD conf/php.ini /etc/php5/fpm/php.ini
 ADD conf/nginx.conf /etc/nginx/nginx.conf
+ADD conf/mime.types /etc/nginx/mime.types
 ADD conf/default /etc/nginx/sites-enabled/default
 ADD html/ /etc/nginx/html/
 ADD script/maid /maid
