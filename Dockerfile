@@ -191,7 +191,7 @@ RUN mkdir -p /var/lib/hhvm & \
 ##      C L E A N      ##
 ##                     ##
 #########################
-RUN apt-get purge -y \
+RUN apt-get remove -y \
     build-essential \
     libpcre3-dev \
     libssl-dev \
