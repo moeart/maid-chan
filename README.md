@@ -34,5 +34,8 @@ Date: 2018-6-13 (Y-M-D)
 * linuxeye.cn
 * chinaunix.net
 
+### WARNING
+PLEASE DO NOT RESELL THIS SOFTWARE, YOU CAN USE IT IN YOUR COMPANY.
+
 ---
 (c)2018 MoeArt Development Team
