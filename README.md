@@ -2,6 +2,7 @@
 MoeArt Maid Chan is a web engine for website or web application. It's based on tengine, nginx and HHVM. It's a high performance web application server. - www.acgdraw.com
 
 ### For More Information
+**NOTICE** For Huawei SWR users, please use ```HwDockerfile``` instead of ```Dockerfile``` due to HwSWR does not support remove package.    
 Please visit https://hub.docker.com/r/moeart/maid-chan
 
 ### Includes

@@ -188,41 +188,6 @@ RUN mkdir -p /var/lib/hhvm & \
 
 #########################
 ##                     ##
-##      C L E A N      ##
-##                     ##
-#########################
-RUN apt-get purge -y \
-    build-essential \
-    libpcre3-dev \
-    libssl-dev \
-    libxml2-dev \
-    libxslt-dev \
-    libgd2-dev \
-    libgeoip-dev \
-    libperl-dev \
-    zlib1g-dev \
-    wget \
-    gnupg \
-    lsb-release
-RUN apt-get autoremove -y
-RUN apt-get install -y \
-    libpcre3 \
-    libssl1.1 \
-    libxml2 \
-    libxslt1.1 \
-    libgd3 \
-    libgeoip1 \
-    libperl5.24 \
-    zlib1g
-WORKDIR /usr/src
-RUN rm -rf /usr/src/* && \
-    apt-get clean all && \
-    rm -rf /tmp/*
-
-
-
-#########################
-##                     ##
 ##       M A I D       ##
 ##                     ##
 #########################
