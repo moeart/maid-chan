@@ -191,7 +191,7 @@ RUN mkdir -p /var/lib/hhvm & \
 ##      C L E A N      ##
 ##                     ##
 #########################
-RUN apt-get remove -y \
+RUN #apt-get purge -y \
     build-essential \
     libpcre3-dev \
     libssl-dev \
@@ -205,7 +205,7 @@ RUN apt-get remove -y \
     gnupg \
     lsb-release
 RUN apt-get autoremove -y
-RUN apt-get install -y \
+RUN #apt-get install -y \
     libpcre3 \
     libssl1.1 \
     libxml2 \
