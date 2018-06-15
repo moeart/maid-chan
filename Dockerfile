@@ -58,7 +58,7 @@ WORKDIR /usr/src
 ADD https://github.com/alibaba/tengine/archive/master.tar.gz tengine.tar.gz
 ADD https://www.openssl.org/source/openssl-$MAID_CHAN_OPENSSL.tar.gz openssl.tar.gz
 RUN tar -zxvf tengine.tar.gz && \
-RUN tar -zxvf openssl.tar.gz && \
+    tar -zxvf openssl.tar.gz && \
     cd tengine-master && \
     sed -i " \
         /#define TENGINE.*/s/\"Tengine/\"MoeArt Maid-chan/; \
