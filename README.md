@@ -31,6 +31,8 @@ Date: 2018-6-13 (Y-M-D)
 * update tengine source code
 * upgrade PHP 5.6 to 7.0
 * replace software source from debian to USTC
+* update openssl to 1.0.2o
+* enable http 2.0 support
 ```
 
 ### Deploy Demo

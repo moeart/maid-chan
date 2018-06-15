@@ -18,6 +18,7 @@ MAINTAINER MoeArt Developmemnt Team <dev@art.moe>
 #########################
 # initize debian base system
 ENV MAID_CHAN_USER www-data
+ENV MAID_CHAN_OPENSSL 1.0.2o
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -55,7 +56,9 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Chongqing /etc/localtime && \
 #########################
 WORKDIR /usr/src
 ADD https://github.com/alibaba/tengine/archive/master.tar.gz tengine.tar.gz
+ADD https://www.openssl.org/source/openssl-$MAID_CHAN_OPENSSL.tar.gz openssl.tar.gz
 RUN tar -zxvf tengine.tar.gz && \
+RUN tar -zxvf openssl.tar.gz && \
     cd tengine-master && \
     sed -i " \
         /#define TENGINE.*/s/\"Tengine/\"MoeArt Maid-chan/; \
@@ -82,6 +85,7 @@ RUN tar -zxvf tengine.tar.gz && \
         --http-proxy-temp-path=/var/lib/nginx/proxy \
         --http-scgi-temp-path=/var/lib/nginx/scgi \
         --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+        --with-openssl=/usr/src/openssl-$MAID_CHAN_OPENSSL \
         --with-http_ssl_module \
         --with-http_gzip_static_module \
         --with-http_gunzip_module \
