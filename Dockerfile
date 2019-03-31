@@ -114,7 +114,6 @@ RUN tar -zxvf tengine.tar.gz && \
         --add-module=modules/ngx_http_sysguard_module \
         --add-module=modules/ngx_http_concat_module \
         --add-module=modules/ngx_http_footer_filter_module \
-        --add-module=modules/ngx_http_slice_module \
         --add-module=modules/ngx_http_trim_filter_module \
         --add-module=modules/ngx_http_upstream_check_module \
         --add-module=modules/ngx_http_upstream_consistent_hash_module \
