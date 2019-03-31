@@ -109,7 +109,7 @@ RUN tar -zxvf tengine.tar.gz && \
         --prefix=/etc/nginx \
         --http-log-path=/var/log/nginx/access.log \
         --error-log-path=/var/log/nginx/error.log \
-        --sbin-path=/usr/sbin/nginx
+        --sbin-path=/usr/sbin/nginx && \
     make && \
     make install && \
     mkdir -p /var/cache/nginx && \
