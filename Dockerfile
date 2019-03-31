@@ -71,6 +71,9 @@ RUN tar -zxvf tengine.tar.gz && \
         s/ Sorry for the inconvenience./ And, Maid-chan donot know what you need./; \
         s/Please report this message and include the following information to us./Please report this message and include the following information to Maid-chan./; \
         s/Thank you very much/Inconvenience to you my sincere apologies/; \
+        s/<hr><center>tengine<\/center>/maid-chan/; \
+        s/<center>//; \
+        s/<\/center>//; \
         " src/http/ngx_http_special_response.c && \
     ./configure \
         --user=$MAID_CHAN_USER \
@@ -106,6 +109,19 @@ RUN tar -zxvf tengine.tar.gz && \
         --with-file-aio \
         --with-pcre \
         --with-pcre-jit \
+        --add-module=modules/ngx_http_slice_module \
+        --add-module=modules/ngx_http_sysguard_module \
+        --add-module=modules/ngx_http_concat_module \
+        --add-module=modules/ngx_http_footer_filter_module \
+        --add-module=modules/ngx_http_slice_module \
+        --add-module=modules/ngx_http_trim_filter_module \
+        --add-module=modules/ngx_http_upstream_check_module \
+        --add-module=modules/ngx_http_upstream_consistent_hash_module \
+        --add-module=modules/ngx_http_upstream_dynamic_module \
+        --add-module=modules/ngx_http_upstream_dyups_module \
+        --add-module=modules/ngx_http_upstream_keepalive_module \
+        --add-module=modules/ngx_http_upstream_session_sticky_module \
+        --add-module=modules/ngx_http_user_agent_module \
         --prefix=/etc/nginx \
         --http-log-path=/var/log/nginx/access.log \
         --error-log-path=/var/log/nginx/error.log \
