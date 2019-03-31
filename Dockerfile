@@ -96,7 +96,7 @@ RUN tar -zxvf tengine.tar.gz && \
         --with-http_image_filter_module \
         --with-http_addition_module \
         --with-http_realip_module \
-        --with-http_sysguard_module \
+        #--with-http_sysguard_module \
         --with-http_v2_module \
         --with-http_ssl_module \
         --with-http_stub_status_module \
