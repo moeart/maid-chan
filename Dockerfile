@@ -109,6 +109,7 @@ RUN tar -zxvf tengine.tar.gz && \
         --with-file-aio \
         --with-pcre \
         --with-pcre-jit \
+        --without-http_upstream_keepalive_module \
         --add-module=modules/ngx_http_slice_module \
         --add-module=modules/ngx_http_sysguard_module \
         --add-module=modules/ngx_http_concat_module \
