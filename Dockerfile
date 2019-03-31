@@ -73,7 +73,6 @@ RUN tar -zxvf tengine.tar.gz && \
         s/Thank you very much/Inconvenience to you my sincere apologies/; \
         " src/http/ngx_http_special_response.c && \
     ./configure \
-        #--enable-mods-static=all \
         --user=$MAID_CHAN_USER \
         --group=$MAID_CHAN_USER \
         --prefix=/usr/share/nginx \
@@ -96,25 +95,13 @@ RUN tar -zxvf tengine.tar.gz && \
         --with-http_image_filter_module \
         --with-http_addition_module \
         --with-http_realip_module \
-        #--with-http_sysguard_module \
         --with-http_v2_module \
         --with-http_ssl_module \
         --with-http_stub_status_module \
         --with-http_sub_module \
         --with-http_xslt_module \
-        --with-http_concat_module \
-        --with-http_upstream_ip_hash_module=shared \
-        --with-http_upstream_least_conn_module=shared \
-        --with-http_upstream_session_sticky_module=shared \
-        --with-http_map_module=shared \
-        --with-http_user_agent_module=shared \
         --with-http_mp4_module \
-        --with-http_split_clients_module=shared \
-        --with-http_access_module=shared \
-        --with-http_user_agent_module=shared \
         --with-http_degradation_module \
-        --with-http_upstream_check_module \
-        --with-http_upstream_consistent_hash_module \
         --with-ipv6 \
         --with-file-aio \
         --with-pcre \
@@ -122,7 +109,7 @@ RUN tar -zxvf tengine.tar.gz && \
         --prefix=/etc/nginx \
         --http-log-path=/var/log/nginx/access.log \
         --error-log-path=/var/log/nginx/error.log \
-        --sbin-path=/usr/sbin/nginx && \
+        --sbin-path=/usr/sbin/nginx
     make && \
     make install && \
     mkdir -p /var/cache/nginx && \
