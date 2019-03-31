@@ -73,7 +73,7 @@ RUN tar -zxvf tengine.tar.gz && \
         s/Thank you very much/Inconvenience to you my sincere apologies/; \
         " src/http/ngx_http_special_response.c && \
     ./configure \
-        --enable-mods-static=all \
+        #--enable-mods-static=all \
         --user=$MAID_CHAN_USER \
         --group=$MAID_CHAN_USER \
         --prefix=/usr/share/nginx \
