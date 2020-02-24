@@ -1,4 +1,4 @@
-FROM debian:10 AS builder
+FROM debian:9 AS builder
 MAINTAINER MoeArt Developmemnt Team <dev@art.moe>
 
 #////////////////////////////////////////////////////////////////////
@@ -71,7 +71,7 @@ RUN tar -zxvf tengine.tar.gz && \
         s/ Sorry for the inconvenience./ And, Maid-chan donot know what you need./; \
         s/Please report this message and include the following information to us./Please report this message and include the following information to Maid-chan./; \
         s/Thank you very much/Inconvenience to you my sincere apologies/; \
-        s/<hr><center>tengine<\/center>/maid-chan/; \
+        s/<hr><center>tengine<\/center>//; \
         s/<center>//; \
         s/<\/center>//; \
         " src/http/ngx_http_special_response.c && \
@@ -153,25 +153,25 @@ RUN tar -zxvf tengine.tar.gz && \
 ##                     ##
 #########################
 RUN apt-get install -y \
-    php7.3-fpm \
-    php7.3-common \
-    php7.3-curl \
-    php7.3-bcmath \
-    php7.3-bz2 \
-    php7.3-dba \
-    php7.3-dom \
-    php7.3-gd \
-    php7.3-mbstring \
-    php7.3-json \
-    php7.3-mcrypt \
-    php7.3-mysqlnd \
-    php7.3-readline \
-    php7.3-simplexml \
-    php7.3-xml \
-    php7.3-soap \
-    php7.3-zip \
-    php7.3-cli \
-    php7.3-opcache
+    php7.0-fpm \
+    php7.0-common \
+    php7.0-curl \
+    php7.0-bcmath \
+    php7.0-bz2 \
+    php7.0-dba \
+    php7.0-dom \
+    php7.0-gd \
+    php7.0-mbstring \
+    php7.0-json \
+    php7.0-mcrypt \
+    php7.0-mysqlnd \
+    php7.0-readline \
+    php7.0-simplexml \
+    php7.0-xml \
+    php7.0-soap \
+    php7.0-zip \
+    php7.0-cli \
+    php7.0-opcache
 
 
 
@@ -193,7 +193,7 @@ RUN apt-get remove -y build-essential && \
 ##       M A I D       ##
 ##                     ##
 #########################
-FROM debian:10-slim
+FROM debian:9-slim
 COPY --from=builder /etc/ /etc/
 COPY --from=builder /usr/ /usr/
 COPY --from=builder /var/ /var/
