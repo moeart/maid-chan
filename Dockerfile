@@ -1,4 +1,4 @@
-FROM debian:9 AS builder
+FROM debian:9-slim
 MAINTAINER MoeArt Developmemnt Team <dev@art.moe>
 
 #////////////////////////////////////////////////////////////////////
@@ -193,11 +193,6 @@ RUN apt-get remove -y build-essential && \
 ##       M A I D       ##
 ##                     ##
 #########################
-FROM debian:9-slim
-COPY --from=builder /etc/ /etc/
-COPY --from=builder /usr/ /usr/
-COPY --from=builder /var/ /var/
-
 ADD conf/nginx.conf /etc/nginx/nginx.conf
 ADD conf/mime.types /etc/nginx/mime.types
 ADD conf/default /etc/nginx/sites-enabled/default
