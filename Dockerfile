@@ -1,4 +1,4 @@
-FROM debian:latest AS builder
+FROM debian:10 AS builder
 MAINTAINER MoeArt Developmemnt Team <dev@art.moe>
 
 #////////////////////////////////////////////////////////////////////
@@ -27,8 +27,8 @@ ENV LC_ALL C
 # initize debian software source
 # and base packages
 RUN mkdir -p /usr/src && \
-    sed -i 's|deb.debian.org|mirrors.ustc.edu.cn|g' /etc/apt/sources.list && \
-    sed -i 's|security.debian.org/debian-security|mirrors.ustc.edu.cn/debian-security|g' /etc/apt/sources.list && \
+    #sed -i 's|deb.debian.org|mirrors.ustc.edu.cn|g' /etc/apt/sources.list && \
+    #sed -i 's|security.debian.org/debian-security|mirrors.ustc.edu.cn/debian-security|g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y \
     cron \
@@ -37,7 +37,7 @@ RUN mkdir -p /usr/src && \
     libssl-dev \
     libxml2-dev \
     libxslt-dev \
-    libgd2-dev \
+    libgd-dev \
     libgeoip-dev \
     libperl-dev \
     zlib1g-dev
@@ -153,25 +153,25 @@ RUN tar -zxvf tengine.tar.gz && \
 ##                     ##
 #########################
 RUN apt-get install -y \
-    php7.0-fpm \
-    php7.0-common \
-    php7.0-curl \
-    php7.0-bcmath \
-    php7.0-bz2 \
-    php7.0-dba \
-    php7.0-dom \
-    php7.0-gd \
-    php7.0-mbstring \
-    php7.0-json \
-    php7.0-mcrypt \
-    php7.0-mysqlnd \
-    php7.0-readline \
-    php7.0-simplexml \
-    php7.0-xml \
-    php7.0-soap \
-    php7.0-zip \
-    php7.0-cli \
-    php7.0-opcache
+    php7.3-fpm \
+    php7.3-common \
+    php7.3-curl \
+    php7.3-bcmath \
+    php7.3-bz2 \
+    php7.3-dba \
+    php7.3-dom \
+    php7.3-gd \
+    php7.3-mbstring \
+    php7.3-json \
+    php7.3-mcrypt \
+    php7.3-mysqlnd \
+    php7.3-readline \
+    php7.3-simplexml \
+    php7.3-xml \
+    php7.3-soap \
+    php7.3-zip \
+    php7.3-cli \
+    php7.3-opcache
 
 
 
@@ -193,7 +193,7 @@ RUN apt-get remove -y build-essential && \
 ##       M A I D       ##
 ##                     ##
 #########################
-FROM debian:latest
+FROM debian:10-slim
 COPY --from=builder /etc/ /etc/
 COPY --from=builder /usr/ /usr/
 COPY --from=builder /var/ /var/
