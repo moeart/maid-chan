@@ -171,7 +171,8 @@ RUN apt-get install -y \
     php7.0-soap \
     php7.0-zip \
     php7.0-cli \
-    php7.0-opcache
+    php7.0-opcache \
+    php7.0-imagick
 
 
 
